@@ -1,40 +1,35 @@
-
-
-
-
-
 import React, { Component } from "react";
-
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import logo from './logo.svg';
-import './App.css';
 
+import PrivateLayout from "./layouts/PrivateLayout";
+import DefaultLayout from "./layouts/DefaultLayout";
+import { publicRoutes, privateRoutes } from "./routes";
 
 class App extends Component {
-   render() {
-      return (
-        <Provider store={store}>
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-              </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
-        </Provider>
-      );
-   }
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          {publicRoutes.map((route, index) => {
+            return (
+              <Route
+                key={index}
+                exact={route.exact}
+                path={route.path}
+                component={props => (
+                  <DefaultLayout>
+                    <route.component {...props} />
+                  </DefaultLayout>
+                )}
+              />
+            );
+          })}
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
-
