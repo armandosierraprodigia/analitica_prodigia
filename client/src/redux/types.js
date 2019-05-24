@@ -1,0 +1,8 @@
+export const GET_ERRORS = "GET_ERRORS";
+
+//Auth
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const LOGIN_LOADING = "LOGIN_LOADING";
+export const SET_CURRENT_USER_FROM_TOKEN = "SET_CURRENT_USER_FROM_TOKEN";
+export const SIGN_OUT_USER = "SIGN_OUT_USER";
+
