@@ -5,11 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-      "server": "nodemon server.js",
-      "installprod": "concurrently \"npm install \" \"npm run client-install\"",
-      "client-install": "npm install --prefix client",
-      "client": "npm start --prefix client",
-      "dev": "concurrently \"npm run server \" \"npm run client\""
+    "server": "nodemon server.js",
+    "installprod": "concurrently \"npm install \" \"npm run client-install\"",
+    "installdev": "npm install concurrently && npm run installprod",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "author": "Armando Sierra & Team Prodigia",
   "license": "ISC",
